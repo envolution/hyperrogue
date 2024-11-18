@@ -435,13 +435,13 @@ EX namespace dialog {
       if(ch >= 128 && ch < 192) continue;
       if(i < isize(str)) {
         char *ch = &str[i];
-        if(*ch == ')') continue;
-        if(starts_with(ch, "）")) continue;
+      if(*ch == ')') continue;
+      if (strncmp(ch, "）", strlen("）")) == 0) continue;
         }
       if(i > 0) {
         char *ch = &str[i - utfsize_before(str,i)];
-        if(*ch == '(') continue;
-        if(starts_with(ch, "（")) continue;
+      if(*ch == '(') continue;
+      if (strncmp(ch, "（", strlen("（")) == 0) continue;
         }
       if(textwidth(siz, str.substr(last, i-last)) > xs) {
         if(lastspace == last) ls = last_i, last = last_i;
